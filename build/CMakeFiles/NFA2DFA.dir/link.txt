@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/cc  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/NFA2DFA.dir/NFA.c.o CMakeFiles/NFA2DFA.dir/bitarray.c.o CMakeFiles/NFA2DFA.dir/DFA.c.o CMakeFiles/NFA2DFA.dir/convert.c.o CMakeFiles/NFA2DFA.dir/main.c.o -o NFA2DFA 

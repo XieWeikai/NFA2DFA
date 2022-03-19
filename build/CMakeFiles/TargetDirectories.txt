@@ -1,0 +1,3 @@
+/Users/admin/Desktop/学校相关/大二/形式语言与自动机/lab1/build/CMakeFiles/rebuild_cache.dir
+/Users/admin/Desktop/学校相关/大二/形式语言与自动机/lab1/build/CMakeFiles/edit_cache.dir
+/Users/admin/Desktop/学校相关/大二/形式语言与自动机/lab1/build/CMakeFiles/NFA2DFA.dir
