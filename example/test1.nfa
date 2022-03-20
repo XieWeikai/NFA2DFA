@@ -2,9 +2,11 @@ Q = {q0,q1,q2}
 
 T = {a,b}
 
-start = q0
 
 F = { q2 }
+
+start = q0
+
 
 q0,a => {q1}
 q1,a => {q1,q2}

@@ -3,6 +3,7 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <memory.h>
 #include "bitarray.h"
 
 #define DEFAULTSIZE 8
@@ -10,8 +11,8 @@
 #define INTSIZE sizeof(int)
 
 Set *NewSet(){
-    Set *t = malloc(sizeof (*t));
-    t->m = malloc(sizeof (unsigned  int) * DEFAULTSIZE);
+    Set *t = calloc(1,sizeof (*t));
+    t->m = calloc(DEFAULTSIZE,sizeof (unsigned  int)); //初始化为0
     t->top = -1;
     t->size = DEFAULTSIZE;
     return t;
@@ -21,8 +22,10 @@ void Add(Set *s,int e){
     int i,b;
     i = e >> 5;
     b = e & 0x1f;
-    if(i >= s->size){
+    while(i >= s->size){
         s->m = realloc(s->m,s->size*2*sizeof (unsigned int));
+        for(int t = s->size;t < s->size*2;t++)
+            s->m[t] = 0; //初始化为0
         s->size >>= 1;
     }
     if(i > s->top)

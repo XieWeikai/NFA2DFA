@@ -248,9 +248,37 @@ NFA *ParseNFA(FILE *fp){
     NFA *nfa = malloc(sizeof (*nfa));
     nextToken(fp);
     ParseStates(nfa,fp);
-    ParseAlphabet(nfa,fp);
-    ParseStartState(nfa,fp);
-    ParseFState(nfa,fp);
+
+    int alph = 0,start = 0,FStat = 0;
+    while(!(alph && start && FStat)){
+        if(token == ALPHABET){
+            if(alph == 1){
+                fprintf(stderr,"error:"COLOR_NONE"duplicated alphabet\n");
+                exit(-1);
+            }
+            ParseAlphabet(nfa,fp);
+            alph = 1;
+        }
+        if(token == START){
+            if(start == 1){
+                fprintf(stderr,"error:"COLOR_NONE"duplicated start state definition\n");
+                exit(-1);
+            }
+            ParseStartState(nfa,fp);
+            start = 1;
+        }
+        if(token == FINISH){
+            if(FStat == 1){
+                fprintf(stderr,"error:"COLOR_NONE"duplicated F state definition\n");
+                exit(-1);
+            }
+            ParseFState(nfa,fp);
+            FStat = 1;
+        }
+    }
+//    ParseAlphabet(nfa,fp);
+//    ParseStartState(nfa,fp);
+//    ParseFState(nfa,fp);
 
     while(token != EOF)
         ParseItem(nfa,fp);
